@@ -1,4 +1,4 @@
-# Sanskrit Poem Verifier
+# Sanskrit Meter Mitra
 This repository is created as an initial attempt at creating a Sanskrit poem meter verifier using Chandas (https://github.com/sanskrit-coders/chandas) library. The initial idea was proposed by Rohan Pandey here: https://x.com/khoomeik/status/1925672340819476791
 
 ## Setup
@@ -25,8 +25,7 @@ Meter (Anuṣṭup (Śloka)): 1.8461877023823723
 The reward function `meter_reward_metric(text, meter_name)` in `reward_metric.py` evaluates Sanskrit verse generation quality using this scoring scheme:
 
 ### Meter Matching (Primary Criteria)
-1. **Exact match**: 1 base score + 20/LM_loss  
-   (Combines meter verification with language model naturalness scoring using `google/muril-base-cased`)
+1. **Exact match**: If the given input text is an exact match for the target meter, then the score is assigned as: 1 + (20 / LMLoss). Here, LMLoss is calculated with a context that contains an example poem in the target meter. This is to assess the naturalness of the generated string. The model currently used is, `google/muril-base-cased`, but open to suggestions!
 2. **Partial match**: 0.5
 3. **Accidental match**: 0.25
 4. **Other exact matches**: 0.1 
