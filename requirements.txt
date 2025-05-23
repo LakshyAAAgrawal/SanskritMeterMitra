@@ -1,0 +1,3 @@
+-e git+https://github.com/sanskrit-coders/chandas@2f715ebdc125060bbb75be4efcaef6a85bff23f2#egg=chandas
+transformers==4.52.3
+torch==2.7.0
